@@ -1,3 +1,5 @@
+#!/usr/bin/env babel-node --optional es7.asyncFunctions
+
 /**
  *  Copyright (c) 2015, Facebook, Inc.
  *  All rights reserved.
@@ -7,27 +9,27 @@
  *  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-// Model types
-class User extends Object {}
-class Widget extends Object {}
+import sr from 'sync-request';
 
-// Mock data
-var viewer = new User();
-viewer.id = '1';
-viewer.name = 'Anonymous';
-var widgets = ['What\'s-it', 'Who\'s-it', 'How\'s-it'].map((name, i) => {
-  var widget = new Widget();
-  widget.name = name;
-  widget.id = `${i}`;
-  return widget;
-});
+// Model types
+class Gif extends Object {}
+class Search extends Object {}
+class Images extends Object {}
+class Image extends Object {}
 
 module.exports = {
-  // Export methods that your schema can use to interact with your database
-  getUser: (id) => id === viewer.id ? viewer : null,
-  getViewer: () => viewer,
-  getWidget: (id) => widgets.find(w => w.id === id),
-  getWidgets: () => widgets,
-  User,
-  Widget,
+  getGif: (id) => {
+    var response = sr('GET', `http://api.giphy.com/v1/gifs/${id}?api_key=dc6zaTOxFJmzC`);
+    var result = JSON.parse(response.getBody('utf8'));
+    return result.data;
+  },
+  getSearch: (id) => {
+    var response = sr('GET', `http://api.giphy.com/v1/gifs/search?q=funny%20cat&api_key=dc6zaTOxFJmzC`);
+    var body = JSON.parse(response.getBody('utf8'));
+    var result = new Search();
+    result.results = body.data;
+    return result;
+  },
+  Gif,
+  Search
 };
