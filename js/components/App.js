@@ -6,7 +6,6 @@ class App extends React.Component {
         {this.props.search.results.map(gif =>
           <p>
             <img src={gif.images.fixed_height.url} />
-            }
           </p>
         )}
       </div>
