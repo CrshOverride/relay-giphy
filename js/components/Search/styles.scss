@@ -19,5 +19,11 @@ body {
         }
       }
     }
+
+    .giphy.cards {
+      .ui.card {
+        background-color: lighten(#1b1c1d, 15);
+      }
+    }
   }
 }
