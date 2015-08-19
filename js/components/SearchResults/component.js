@@ -59,32 +59,3 @@ export default Relay.createContainer(SearchResults, {
     `,
   },
 });
-
-/*
-
-<div>
-  <h1>Giphy Results!</h1>
-  {this.props.search.results.map(gif =>
-    <p>
-      <img src={gif.images.fixed_height.url} />
-    </p>
-  )}
-</div>
-
-<div className='ui grey inverted middle aligned giffy container segment'>
-  <div className='ui grid'>
-    <div className='row'>
-      <div className='six wide column center aligned middle aligned'>
-        <img className='giffy' src={gif.images.fixed_height.url} />
-      </div>
-      <div className='ten wide column left aligned'>
-        <div className='ui large fluid labeled input'>
-          <div className='ui label'>Embed URL</div>
-          <input type='text' value={gif.embed_url} />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-*/
