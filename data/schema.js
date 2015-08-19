@@ -120,6 +120,10 @@ var gifType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'The embeddable URL of the image'
     },
+    bitly_url: {
+      type: GraphQLString,
+      description: 'The bit.ly shortened URL of the image'
+    },
     images: {
       type: imagesType,
       description: 'All the Giphy!'

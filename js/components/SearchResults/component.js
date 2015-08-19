@@ -27,8 +27,20 @@ class SearchResults extends React.Component {
                   </div>
                   <div className='field'>
                     <div className='ui small fluid labeled input'>
+                      <div className='ui label'>Bitly URL</div>
+                      <input type='text' value={gif.bitly_url} />
+                    </div>
+                  </div>
+                  <div className='field'>
+                    <div className='ui small fluid labeled input'>
                       <div className='ui label'>Embed URL</div>
                       <input type='text' value={gif.embed_url} />
+                    </div>
+                  </div>
+                  <div className='field'>
+                    <div className='ui small fluid labeled input'>
+                      <div className='ui label'>Download URL</div>
+                      <input type='text' value={`http://i.giphy.com/${gif.id}.gif`} />
                     </div>
                   </div>
                 </form>
@@ -46,9 +58,11 @@ export default Relay.createContainer(SearchResults, {
     search: () => Relay.QL`
       fragment on Search {
         results {
+          id
           type
           embed_url
-          url
+          url,
+          bitly_url,
           images {
             fixed_height {
               url
