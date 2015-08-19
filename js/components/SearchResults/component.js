@@ -15,12 +15,6 @@ class SearchResults extends React.Component {
                 <form className='ui form'>
                   <div className='field'>
                     <div className='ui small fluid labeled input'>
-                      <div className='ui label'>Image Type</div>
-                      <input type='text' value={gif.type} />
-                    </div>
-                  </div>
-                  <div className='field'>
-                    <div className='ui small fluid labeled input'>
                       <div className='ui label'>URL</div>
                       <input type='text' value={gif.url} />
                     </div>
@@ -40,7 +34,7 @@ class SearchResults extends React.Component {
                   <div className='field'>
                     <div className='ui small fluid labeled input'>
                       <div className='ui label'>Download URL</div>
-                      <input type='text' value={`http://i.giphy.com/${gif.id}.gif`} />
+                      <input type='text' value={`http://i.giphy.com/${gif.id}.${gif.type}`} />
                     </div>
                   </div>
                 </form>
