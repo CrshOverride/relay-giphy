@@ -1,5 +1,6 @@
 import App from './components/App';
 import AppHomeRoute from './routes/AppHomeRoute';
+import Search from './components/Search/component';
 
 let doSomething = () => {
   window.history.pushState({}, 'Home', '/');
@@ -11,13 +12,7 @@ let router = new LightRouter({
   pathRoot: '',
   routes: {
     '': () => {
-      React.render(
-        <Relay.RootContainer
-          Component={App}
-          route={new AppHomeRoute()}
-        />,
-        document.getElementById('root')
-      );
+      React.render(<Search router={router} />, document.getElementById('root'));
     },
     '{q}': (params) => {
       React.render(
@@ -50,4 +45,10 @@ window.addEventListener('popstate', () => {
       )
     }
 
+<Relay.RootContainer
+          Component={App}
+          route={new AppHomeRoute()}
+        />,
+        document.getElementById('root')
+      );
 */

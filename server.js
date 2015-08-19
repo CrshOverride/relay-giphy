@@ -24,6 +24,10 @@ var compiler = webpack({
         test: /\.js$/,
         loader: 'babel',
         query: {stage: 0, plugins: ['./build/babelRelayPlugin']}
+      },
+      {
+        test: /\.s[ac]ss$/,
+        loader: 'style!css!sass'
       }
     ]
   },
@@ -40,6 +44,8 @@ app.use('/', express.static('public'));
 app.use('/node_modules/react', express.static('node_modules/react'));
 app.use('/node_modules/react-relay', express.static('node_modules/react-relay'));
 app.use('/node_modules/lightrouter', express.static('node_modules/lightrouter'));
+app.use('/bower_components/jquery/dist', express.static('bower_components/jquery/dist'));
+app.use('/semantic/dist', express.static('semantic/dist'));
 app.use('*', express.static('public/index.html'));
 app.listen(APP_PORT, () => {
   console.log(`App is now running on http://localhost:${APP_PORT}`);

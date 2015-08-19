@@ -1,0 +1,22 @@
+body {
+  > #root {
+    height: 100%;
+
+    > .grid {
+      height: 100%;
+
+      .column {
+        max-width: 900px;
+
+        .ui.header {
+          font-size: 75px;
+          font-weight: 500;
+        }
+
+        .ui.submit.button {
+          margin-top: 25px;
+        }
+      }
+    }
+  }
+}
