@@ -1,6 +1,7 @@
 body {
   > #root {
     height: 100%;
+    overflow: scroll;
 
     > .grid {
       height: 100%;

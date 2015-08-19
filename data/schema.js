@@ -145,7 +145,13 @@ var queryType = new GraphQLObjectType({
     node: nodeField,
     search: {
       type: searchType,
-      resolve: () => getSearch()
+      args: {
+        q: {
+          description: 'The search term to search for',
+          type: new GraphQLNonNull(GraphQLString)
+        }
+      },
+      resolve: (root, { q }) => getSearch(q)
     }
   })
 });

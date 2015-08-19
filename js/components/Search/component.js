@@ -11,7 +11,7 @@ export default class Search extends React.Component {
   handleSubmit() {
     if(!this.state.searchTerm) return false;
     let parts = _.filter(this.state.searchTerm.split(/[^\w]/gi), (t) => !(t === ''));
-    let cleanTerm = parts.join('_').toLowerCase();
+    let cleanTerm = parts.join('-').toLowerCase();
     window.history.pushState({}, `Search: ${cleanTerm}`, `/${cleanTerm}`);
     this.props.router.run();
     return false;

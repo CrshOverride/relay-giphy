@@ -1,5 +1,5 @@
-import App from './components/App';
-import AppHomeRoute from './routes/AppHomeRoute';
+import SearchResults from './components/SearchResults/component';
+import SearchResultsRoute from './routes/SearchResultsRoute';
 import Search from './components/Search/component';
 
 let doSomething = () => {
@@ -16,8 +16,11 @@ let router = new LightRouter({
     },
     '{q}': (params) => {
       React.render(
-        <div onClick={doSomething}>Searching for: {params.q}</div>, document.getElementById('root')
-      );
+        <Relay.RootContainer
+          Component={SearchResults}
+          route={new SearchResultsRoute({q: params.q.replace(/-/g,' ')})} />,
+        document.getElementById('root')
+      )
     }
   }
 });
@@ -27,28 +30,3 @@ router.run();
 window.addEventListener('popstate', () => {
   router.run();
 });
-
-/*
-
-'': () => {
-      React.render(
-        <Relay.RootContainer
-          Component={App}
-          route={new AppHomeRoute()}
-        />,
-        document.getElementById('root')
-      );
-    },
-    '{q}': (params) => {
-      React.render(
-        <div>Searching for: {params.id}</div>
-      )
-    }
-
-<Relay.RootContainer
-          Component={App}
-          route={new AppHomeRoute()}
-        />,
-        document.getElementById('root')
-      );
-*/

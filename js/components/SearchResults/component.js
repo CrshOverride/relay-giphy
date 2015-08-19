@@ -1,4 +1,4 @@
-class App extends React.Component {
+class SearchResults extends React.Component {
   render() {
     return (
       <div>
@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 }
 
-export default Relay.createContainer(App, {
+export default Relay.createContainer(SearchResults, {
   fragments: {
     search: () => Relay.QL`
       fragment on Search {

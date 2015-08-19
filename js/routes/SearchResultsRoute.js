@@ -3,11 +3,14 @@ export default class extends Relay.Route {
   static queries = {
     search: (Component) => Relay.QL`
       query {
-        search {
+        search(q: $q) {
           ${Component.getFragment('search')},
         }
       }
     `,
   };
+  static paramDefinitions = {
+    q: { required: true }
+  }
   static routeName = 'AppHomeRoute';
 }

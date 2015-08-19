@@ -23,8 +23,8 @@ module.exports = {
     var result = JSON.parse(response.getBody('utf8'));
     return result.data;
   },
-  getSearch: (id) => {
-    var response = sr('GET', `http://api.giphy.com/v1/gifs/search?q=funny%20cat&api_key=dc6zaTOxFJmzC`);
+  getSearch: (q) => {
+    var response = sr('GET', `http://api.giphy.com/v1/gifs/search?q=${q}&api_key=dc6zaTOxFJmzC`);
     var body = JSON.parse(response.getBody('utf8'));
     var result = new Search();
     result.results = body.data;
